@@ -41,10 +41,13 @@ if uploaded_file is not None:
         transforms.Resize((300, 300)),  # 画像のサイズを300x300にリサイズ
         transforms.ToTensor()  # テンソル型に変換
         ])
-        #入力画像リサイズ
+        #入力画像xをリサイズ
         x = transform(i_img)
-        y = net(x.unsqueeze(0))
         
+        #推論結果yを定義
+        y = net(x.unsqueeze(0))
+
+        #検出結果を可視化＋お菓子をカウントする関数を定義
         def visualize_results(input, outputs, threshold):
 
             img= input.permute(1, 2, 0).numpy()
@@ -54,7 +57,8 @@ if uploaded_file is not None:
 
             scale = torch.Tensor(img.shape[1::-1]).repeat(2)
             draw = ImageDraw.Draw(image)
-            font = ImageFont.truetype(size = 8)
+            font = ImageFont.load_default()
+            font = font.font_variant(size=8)
             cou = 0
             bla = 0
             alf = 0
@@ -80,14 +84,16 @@ if uploaded_file is not None:
                         draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='blue')
                         alf = alf+1
                     
-                    #font=fontは除外
-                    draw.text((boxes[0], boxes[1]), label_name, fill='white') 
+                    draw.text((boxes[0], boxes[1]), label_name, fill='white') #font=fontは除外
                     j+=1
 
             return image , cou , bla , alf
-        
+        #関数を実行
         result = visualize_results(x, y, threshold=0.75)
+
+        #検出結果を表示
         st.image(result[0])
+        #カウント数を表示
         st.subheader(f'カントリーマーム：{result[1]}個')
         st.subheader(f'ブラックサンダー：{result[2]}個')
         st.subheader(f'アルフォート：{result[3]}個')
