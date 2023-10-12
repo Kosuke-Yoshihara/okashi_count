@@ -80,7 +80,8 @@ if uploaded_file is not None:
                         draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='blue')
                         alf = alf+1
                     
-                    draw.text((boxes[0], boxes[1]), label_name, fill='white') #font=fontは除外
+                    #font=fontは除外
+                    draw.text((boxes[0], boxes[1]), label_name, fill='white') 
                     j+=1
 
             return image , cou , bla , alf
