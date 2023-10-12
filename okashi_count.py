@@ -89,7 +89,7 @@ if uploaded_file is not None:
 
             return image , cou , bla , alf
         #関数を実行
-        result = visualize_results(x, y, threshold=0.7)
+        result = visualize_results(x, y, threshold=0.75)
 
         #検出結果を表示
         st.image(result[0])
