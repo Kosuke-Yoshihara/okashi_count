@@ -97,4 +97,6 @@ if uploaded_file is not None:
         st.subheader(f'カントリーマーム：{result[1]}個')
         st.subheader(f'ブラックサンダー：{result[2]}個')
         st.subheader(f'アルフォート：{result[3]}個')
+        st.write(w)
+        st.write(h)
         
