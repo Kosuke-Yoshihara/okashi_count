@@ -4,4 +4,3 @@ numpy
 torch
 torchvision
 pytorch_lightning==1.8.3
-SSDNet
