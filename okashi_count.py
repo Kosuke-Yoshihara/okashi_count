@@ -41,7 +41,7 @@ if uploaded_file is not None:
         transforms.Resize((300, 300)),  # 画像のサイズを300x300にリサイズ
         transforms.ToTensor()  # テンソル型に変換
         ])
-        #入力画像xをリサイズ
+        #入力画像i_imgをリサイズ＋テンソル化
         x = transform(i_img)
         
         #推論結果yを定義
