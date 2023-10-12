@@ -57,8 +57,7 @@ if uploaded_file is not None:
 
             scale = torch.Tensor(img.shape[1::-1]).repeat(2)
             draw = ImageDraw.Draw(image)
-            font = ImageFont.load_default()
-            #font = font.font_variant(size=8)
+            font = ImageFont.truetype(font=None , size=8)
             cou = 0
             bla = 0
             alf = 0
@@ -70,8 +69,7 @@ if uploaded_file is not None:
                     score = outputs[0,i,j,0]
                     label_name = aerial_maritime_labels[i-1]
                     boxes = (outputs[0,i,j,1:]*scale).cpu().numpy()
-                    w, h = 30 , 8
-                    #w, h = draw.textsize(label_name)
+                    w, h = font.getsize(label_name)
                     if label_name == 'countrymaam' :
                         draw.rectangle(boxes, outline='red', width=3)
                         draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='red')
