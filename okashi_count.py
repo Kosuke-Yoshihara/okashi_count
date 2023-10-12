@@ -57,7 +57,7 @@ if uploaded_file is not None:
 
             scale = torch.Tensor(img.shape[1::-1]).repeat(2)
             draw = ImageDraw.Draw(image)
-            font = ImageFont.truetype('Roboto-Light.ttf' , 10)
+            font = ImageFont.truetype('Roboto-Light.ttf' , 20)
     
             cou = 0
             bla = 0
