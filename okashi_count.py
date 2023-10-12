@@ -73,18 +73,18 @@ if uploaded_file is not None:
                     x0, y0, x1, y1 = draw.textbbox((boxes[0], boxes[1]), label_name, font)
                     if label_name == 'countrymaam' :
                         draw.rectangle(boxes, outline='red', width=3)
-                        draw.rectangle(x0, y0, x1, y1, fill='red')
+                        draw.rectangle((x0, y0, x1, y1), fill='red')
                         cou = cou+1
                     elif label_name == 'blackthunder' :
                         draw.rectangle(boxes, outline='yellow', width=3)
-                        draw.rectangle(x0, y0, x1, y1, fill='yellow')
+                        draw.rectangle((x0, y0, x1, y1), fill='yellow')
                         bla = bla+1
                     else:
                         draw.rectangle(boxes, outline='blue', width=3)
-                        draw.rectangle(x0, y0, x1, y1, fill='blue')
+                        draw.rectangle((x0, y0, x1, y1), fill='blue')
                         alf = alf+1
                     
-                    draw.text(text_position, label_name, fill='white') #font=fontは除外
+                    draw.text((boxes[0], boxes[1]), label_name, fill='white') #font=fontは除外
                     j+=1
 
             return image , cou , bla , alf
