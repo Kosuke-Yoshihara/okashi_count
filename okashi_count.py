@@ -58,6 +58,7 @@ if uploaded_file is not None:
             scale = torch.Tensor(img.shape[1::-1]).repeat(2)
             draw = ImageDraw.Draw(image)
             font = ImageFont.truetype('Roboto-Light.ttf' , 10)
+    
             cou = 0
             bla = 0
             alf = 0
@@ -69,21 +70,23 @@ if uploaded_file is not None:
                     score = outputs[0,i,j,0]
                     label_name = aerial_maritime_labels[i-1]
                     boxes = (outputs[0,i,j,1:]*scale).cpu().numpy()
-                    w, h = draw.textsize(label_name, font=font)
+                    text_psition = (boxes[0], boxes[1])
+                    (x0, y0, x1, y1) = draw.textbbox(text_position, label_name, font)
+                    rectangle_position = (x0, y0, x1, y1)
                     if label_name == 'countrymaam' :
                         draw.rectangle(boxes, outline='red', width=3)
-                        draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='red')
+                        draw.rectangle(rectangle_position, fill='red')
                         cou = cou+1
                     elif label_name == 'blackthunder' :
                         draw.rectangle(boxes, outline='yellow', width=3)
-                        draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='yellow')
+                        draw.rectangle(rectangle_position, fill='yellow')
                         bla = bla+1
                     else:
                         draw.rectangle(boxes, outline='blue', width=3)
-                        draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='blue')
+                        draw.rectangle(rectangle_position, fill='blue')
                         alf = alf+1
                     
-                    draw.text((boxes[0], boxes[1]), label_name, fill='white') #font=fontは除外
+                    draw.text(text_position, label_name, fill='white') #font=fontは除外
                     j+=1
 
             return image , cou , bla , alf
