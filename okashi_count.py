@@ -54,7 +54,7 @@ if uploaded_file is not None:
 
             scale = torch.Tensor(img.shape[1::-1]).repeat(2)
             draw = ImageDraw.Draw(image)
-            font = ImageFont.truetype(size = 8)
+            #font = ImageFont.truetype(size = 8)
             cou = 0
             bla = 0
             alf = 0
@@ -80,7 +80,7 @@ if uploaded_file is not None:
                         draw.rectangle([boxes[0], boxes[1], boxes[0]+w, boxes[1]+h], fill='blue')
                         alf = alf+1
                     
-                    draw.text((boxes[0], boxes[1]), label_name, font=font, fill='white')
+                    draw.text((boxes[0], boxes[1]), label_name, fill='white') #font=fontは除外
                     j+=1
 
             return image , cou , bla , alf
