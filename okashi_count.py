@@ -12,7 +12,7 @@ st.title('お菓子の検出アプリ')
 st.subheader('以下のお菓子を検出します')
 
 #検出対象のお菓子
-col1, col2, col3 = st.columns(3)
+col1, col2, col3  = st.columns(3)
 
 with col1:
     st.write("カントリーマアム")
@@ -24,7 +24,7 @@ with col2:
     
 with col3:
     st.write("アルフォート")
-    st.image("アルフォート.jpg", use_column_width=True)
+    st.image("アルフォート.jpg", use_column_width=True)   
 
 #入力画像アップロード
 uploaded_file = st.file_uploader("ファイルを選択してください", type=[ 'png', 'jpg'])
@@ -35,8 +35,9 @@ if uploaded_file is not None:
     if st.button(label='お菓子検出'):
         net = Net()
         net = Net(phase='test', num_classes=4).cpu().eval()
-        net.load_state_dict(torch.load('ssd.pt'))
+        net.load_state_dict(torch.load('ssd2.pt'))
         
+        #リサイズ＋テンソル化させる関数を定義
         transform = transforms.Compose([
         transforms.Resize((300, 300)),  # 画像のサイズを300x300にリサイズ
         transforms.ToTensor()  # テンソル型に変換
@@ -97,5 +98,4 @@ if uploaded_file is not None:
         st.subheader(f'カントリーマーム：{result[1]}個')
         st.subheader(f'ブラックサンダー：{result[2]}個')
         st.subheader(f'アルフォート：{result[3]}個')
-    
         
