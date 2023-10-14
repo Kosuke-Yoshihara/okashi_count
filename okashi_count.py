@@ -37,7 +37,7 @@ if uploaded_file is not None:
         net = Net(phase='test', num_classes=4).cpu().eval()
         net.load_state_dict(torch.load('ssd2.pt'))
         
-        #リサイズ＋テンソル化させる関数を定義
+        #入力画像をリサイズ＋テンソル化させる関数を定義
         transform = transforms.Compose([
         transforms.Resize((300, 300)),  # 画像のサイズを300x300にリサイズ
         transforms.ToTensor()  # テンソル型に変換
@@ -93,7 +93,7 @@ if uploaded_file is not None:
         result = visualize_results(x, y, threshold=0.75)
 
         #検出結果を表示
-        st.image(result[0])
+        st.image(result[0] , width = 500)
         #カウント数を表示
         st.subheader(f'カントリーマアム：{result[1]}個')
         st.subheader(f'ブラックサンダー：{result[2]}個')
