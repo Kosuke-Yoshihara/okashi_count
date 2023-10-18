@@ -71,7 +71,7 @@ if uploaded_file is not None:
                     score = outputs[0,i,j,0]
                     label_name = aerial_maritime_labels[i-1]
                     boxes = (outputs[0,i,j,1:]*scale).cpu().numpy()
-                    x0, y0, x1, y1 = draw.textbbox((boxes[0], boxes[1]-12), label_name, font)
+                    x0, y0, x1, y1 = draw.textbbox((boxes[0], boxes[1]-10), label_name, font)
                     if label_name == 'countrymaam' :
                         draw.rectangle(boxes, outline='red', width=2)
                         draw.rectangle((x0, y0, x1, y1), fill='red')
@@ -85,7 +85,7 @@ if uploaded_file is not None:
                         draw.rectangle((x0, y0, x1, y1), fill='blue')
                         alf = alf+1
                     
-                    draw.text((boxes[0], boxes[1]-12), label_name, font=font, fill='white') #font=fontは除外
+                    draw.text((boxes[0], boxes[1]-10), label_name, font=font, fill='white') #font=fontは除外
                     j+=1
 
             return image , cou , bla , alf
