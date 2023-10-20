@@ -37,7 +37,7 @@ if uploaded_file is not None:
         net = Net(phase='test', num_classes=4).cpu().eval()
         net.load_state_dict(torch.load('ssd2.pt'))
         
-        #リサイズ＋テンソル化させる関数を定義
+        #入力画像をリサイズ＋テンソル化させる関数を定義
         transform = transforms.Compose([
         transforms.Resize((300, 300)),  # 画像のサイズを300x300にリサイズ
         transforms.ToTensor()  # テンソル型に変換
