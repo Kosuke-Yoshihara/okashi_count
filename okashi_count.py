@@ -94,9 +94,10 @@ if uploaded_file is not None:
 
         #検出結果を表示
         st.image(result[0],width = 500 )
-        #カウント数を表示する
+        #カウント数を表示します
+        okashi_list = ['カントリーマーム','ブラックサンダー','アルフォート']
+        for m in range(len(okashi_list)) :
+            if result[m+1] >= 1 :
+                st.subheader(f'{okashi_list[m]} : {result[1]}個')
         
-        st.subheader(f'カントリーマアム：{result[1]}個')
-        st.subheader(f'ブラックサンダー：{result[2]}個')
-        st.subheader(f'アルフォート：{result[3]}個')
         
