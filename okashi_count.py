@@ -98,6 +98,6 @@ if uploaded_file is not None:
         okashi_list = ['カントリーマアム','ブラックサンダー','アルフォート']
         for m in range(len(okashi_list)) :
             if result[m+1] >= 1 :
-                st.subheader(f'{okashi_list[m]} : {result[1]}個')
+                st.subheader(f'{okashi_list[m]} : {result[m+1]}個')
         
         
