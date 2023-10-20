@@ -95,7 +95,7 @@ if uploaded_file is not None:
         #検出結果を表示
         st.image(result[0],width = 500 )
         #カウント数を表示します
-        okashi_list = ['カントリーマーム','ブラックサンダー','アルフォート']
+        okashi_list = ['カントリーマaム','ブラックサンダー','アルフォート']
         for m in range(len(okashi_list)) :
             if result[m+1] >= 1 :
                 st.subheader(f'{okashi_list[m]} : {result[1]}個')
