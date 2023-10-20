@@ -94,9 +94,9 @@ if uploaded_file is not None:
 
         #検出結果を表示
         st.image(result[0],width = 500 )
-        #カウント数を表示
+        #カウント数を表示する
+        
         st.subheader(f'カントリーマアム：{result[1]}個')
         st.subheader(f'ブラックサンダー：{result[2]}個')
         st.subheader(f'アルフォート：{result[3]}個')
-        st.subheader('以上')
         
