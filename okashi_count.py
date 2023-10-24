@@ -96,8 +96,12 @@ if uploaded_file is not None:
         st.image(result[0],width = 500 )
         #カウント数を表示します
         okashi_list = ['カントリーマアム','ブラックサンダー','アルフォート']
+        zero = 0
         for m in range(len(okashi_list)) :
             if result[m+1] >= 1 :
                 st.subheader(f'{okashi_list[m]} : {result[m+1]}個')
+                zero = zero+1
+        if zero == 0 :
+            st.subheader('検知のお菓子は検知されませんでした')
         
         
