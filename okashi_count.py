@@ -102,6 +102,6 @@ if uploaded_file is not None:
                 st.subheader(f'{okashi_list[m]} : {result[m+1]}個')
                 zero = zero+1
         if zero == 0 :
-            st.subheader('検知のお菓子は検知されませんでした')
+            st.subheader('検知対象のお菓子は見つかりませんでした')
         
         
